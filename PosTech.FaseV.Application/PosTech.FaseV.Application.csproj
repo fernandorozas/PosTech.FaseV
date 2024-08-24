@@ -15,15 +15,4 @@
     <PackageReference Include="MediatR" Version="12.4.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\DeleteAsset\" />
-    <Folder Include="UseCases\AddPortfolio\" />
-    <Folder Include="UseCases\DeletePortfolio\" />
-    <Folder Include="UseCases\AddTransaction\" />
-    <Folder Include="UseCases\DeleteTransaction\" />
-    <Folder Include="UseCases\UpdateTransaction\" />
-    <Folder Include="UseCases\UpdatePortfolio\" />
-    <Folder Include="UseCases\UpdateAsset\" />
-  </ItemGroup>
-
 </Project>

@@ -5,16 +5,16 @@ namespace PosTech.FaseV.Domain
     public class Transaction : BaseAuditableEntity
     {
         protected Transaction() { }
-        public Transaction(TrasactionType trasactionType, decimal amount, decimal price, Portfolio portfolio, Asset asset)
+        public Transaction(int transactionType, decimal amount, decimal price, Portfolio portfolio, Asset asset)
         {
-            TrasactionType = trasactionType;
+            TransactionType = (TransactionType)transactionType;
             Amount = amount;
             Price = price;
             Portfolio = portfolio;
             Asset = asset;
         }
 
-        public TrasactionType TrasactionType { get; set; }
+        public TransactionType TransactionType { get; set; }
         public decimal Amount { get; set; }
         public decimal Price { get; set; }
 

@@ -1,61 +1,62 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PosTech.FaseV.Application.Gateways.DataAccess;
 using PosTech.FaseV.Application.Notifications;
-using PosTech.FaseV.Application.UseCases.AddAsset;
+using PosTech.FaseV.Application.UseCases.AddPortfolio;
 using PosTech.FaseV.Application.UseCases.DeleteAsset;
+using PosTech.FaseV.Application.UseCases.DeletePortfolio;
 using PosTech.FaseV.Application.UseCases.UpdateAsset;
+using PosTech.FaseV.Application.UseCases.UpdatePortfolio;
 
 namespace PosTech.FaseV.Service.Controllers
 {
-    [Route("api/assets")]
+    [Route("api/portfolios")]
     [ApiController]
-    public class AssetsController : MainController
+    public class PortfoliosController : MainController
     {
-        private readonly IRepositoryAsset _repositoryAsset;
+        private readonly IRepositoryPortfolio _repositoryPortfolio;
         private readonly IMediator _mediator;
 
-        public AssetsController(INotificator notificator, IRepositoryAsset repositoryAsset,
+        public PortfoliosController(INotificator notificator, IRepositoryPortfolio repositoryPortfolio,
             IMediator mediator) : base(notificator)
         {
-            _repositoryAsset = repositoryAsset;
+            _repositoryPortfolio = repositoryPortfolio;
             _mediator = mediator;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var assets = await _repositoryAsset.GetAllAsync();
-            return CustomResponse(assets);
+            var portfolios = await _repositoryPortfolio.GetAllAsync();
+            return CustomResponse(portfolios);
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var asset = await _repositoryAsset.GetByIdAsync(id);
-            return CustomResponse(asset);
+            var portfolio = await _repositoryPortfolio.GetByIdAsync(id);
+            return CustomResponse(portfolio);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAsync(AddAssetRequest request)
+        public async Task<IActionResult> AddAsync(AddPortfolioRequest request)
         {
             await _mediator.Send(request);
             return CustomResponse();
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteAsync(DeleteAssetRequest request)
+        public async Task<IActionResult> DeleteAsync(DeletePortfolioRequest request)
         {
             await _mediator.Send(request);
             return CustomResponse();
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateAsync(UpdateAssetRequest request)
+        public async Task<IActionResult> UpdateAsync(UpdatePortfolioRequest request)
         {
             await _mediator.Send(request);
             return CustomResponse();
         }
-
     }
 }

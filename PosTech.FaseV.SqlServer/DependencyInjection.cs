@@ -19,6 +19,8 @@ namespace PosTech.FaseV.SqlServer
             services.AddSingleton(TimeProvider.System);
 
             services.AddScoped<IRepositoryAsset, RepositoryAsset>();
+            services.AddScoped<IRepositoryTransaction, RepositoryTransaction>();
+            services.AddScoped<IRepositoryPortfolio, RepositoryPortfolio>();
 
             services.AddDbContext<AppDbContext>((sp, options) =>
             {

@@ -55,7 +55,7 @@ namespace PosTech.FaseV.SqlServer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TrasactionType = table.Column<int>(type: "int", nullable: false),
+                    TransactionType = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PortfolioId = table.Column<int>(type: "int", nullable: true),
