@@ -6,7 +6,7 @@ namespace PosTech.FaseV.Application.UseCases
 {
     public abstract class RequestHandlerBase
     {
-        private readonly INotificator _notificator;
+        protected readonly INotificator _notificator;
         protected RequestHandlerBase(INotificator notificator)
         {
             _notificator = notificator;

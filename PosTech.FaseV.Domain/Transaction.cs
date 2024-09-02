@@ -1,20 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using FluentValidation;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PosTech.FaseV.Domain
 {
     public class Transaction : BaseAuditableEntity
     {
         protected Transaction() { }
-        public Transaction(TrasactionType trasactionType, decimal amount, decimal price, Portfolio portfolio, Asset asset)
+        public Transaction(int transactionType, decimal amount, decimal price, Portfolio portfolio, Asset asset)
         {
-            TrasactionType = trasactionType;
+            TransactionType = (TransactionType)transactionType;
             Amount = amount;
             Price = price;
             Portfolio = portfolio;
             Asset = asset;
         }
 
-        public TrasactionType TrasactionType { get; set; }
+        public TransactionType TransactionType { get; set; }
         public decimal Amount { get; set; }
         public decimal Price { get; set; }
 
@@ -23,6 +24,39 @@ namespace PosTech.FaseV.Domain
 
         [ForeignKey("AssetId")]
         public virtual Asset Asset { get; set; }
+
+       /* protected override void Validate()
+        {
+            ValidationResult = new ValidatorTransactionValido().Validate(this);
+        } */
+
+        public class ValidatorTransactionValido : AbstractValidator<Transaction>
+        {
+            public ValidatorTransactionValido()
+            {
+                RuleFor(x => x.TransactionType)
+                    .IsInEnum()
+                    .WithMessage("TransactionType deve ser um valor válido de TransactionType.");
+
+                RuleFor(x => x.Amount)
+                    .GreaterThan(0)
+                    .WithMessage("Amount deve ser maior que zero.");
+
+                RuleFor(x => x.Price)
+                    .GreaterThan(0)
+                    .WithMessage("Price deve ser maior que zero.");
+
+                RuleFor(x => x.Portfolio)
+                    .NotNull()
+                    .WithMessage("Portfolio é obrigatório.");
+
+                RuleFor(x => x.Asset)
+                    .NotNull()
+                    .WithMessage("Asset é obrigatório.");
+            }
+        }
+
+
 
     }
 }
