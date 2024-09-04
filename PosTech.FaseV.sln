@@ -23,6 +23,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{E333B8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProjectPostech.FaseV", "TestProjectPostech.FaseV\TestProjectPostech.FaseV.csproj", "{9040900C-61A5-45B8-8A25-9653DCDD6182}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{4019A038-CDE0-4F2E-A725-3C4D535539CE}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+		estrutura.png = estrutura.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
