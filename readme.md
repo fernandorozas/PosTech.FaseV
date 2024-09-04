@@ -57,7 +57,7 @@ entre Comandos e Consultas.
 
 ## Estrutura da Aplicação
 
-<img src="https://github.com/fernandorozas/PosTech.FaseV/blob/master/docs/estrutura.png" />
+<img src="https://github.com/fernandorozas/PosTech.FaseV/blob/master/estrutura.png" />
 
 A aplicação está divida em camadas, em que cada componente tem sua responsabilidade separada.
 
